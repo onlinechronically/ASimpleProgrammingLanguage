@@ -54,7 +54,6 @@ final class Environment {
   }
 
   void set(String id, AstNode value) {
-//    System.out.println(ENV.toString());
     ENV.put(id, value);
   }
 }
