@@ -1,19 +1,23 @@
-final class ApplyNode extends AstNode {
+import java.util.List;
 
-  ApplyNode(AstNode fn, AstNode... args) {
-    // TODO.
-    throw new UnsupportedOperationException("not implemented yet");
+final class ApplyNode extends AstNode {
+  private String fn;
+
+  ApplyNode(String fn, AstNode... args) {
+    super(args);
+    this.fn = fn;
   }
 
   @Override
   AstNode eval(Environment env) {
-    // TODO.
-    throw new UnsupportedOperationException("not implemented yet");
+    List<AstNode> args = this.getChildren().stream().map(node -> node.eval(env)).toList(); // evaluate all the argument nodes
+    Environment invokeEnv = env.extend(((FuncNode) env.lookup(fn)).getIdentifiers(), args); // extend the given Environment to include all the argument for the given function
+    AstNode functionNode = env.lookup(fn); // find the function node to evaluate
+    return functionNode.eval(invokeEnv);
   }
 
   @Override
   public String toString() {
-    // TODO.
-    throw new UnsupportedOperationException("not implemented yet");
+    return String.format("(%s%s)", this.fn, this.getChildren().isEmpty() ? "" : String.join(" ", this.getChildren().stream().map(n -> n.toString()).toList()));
   }
 }

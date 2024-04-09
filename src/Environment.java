@@ -43,4 +43,12 @@ final class Environment {
     env.ENV.put(id, value);
     return env;
   }
+
+  Environment extend(List<String> identifiers, List<AstNode> arguments) {
+    Environment env = new Environment(this);
+    for (int i = 0; i < identifiers.size(); i++) {
+      env.ENV.put(identifiers.get(i), arguments.get(i));
+    }
+    return env;
+  }
 }
