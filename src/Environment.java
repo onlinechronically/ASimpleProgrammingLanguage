@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 final class Environment {
@@ -50,5 +51,10 @@ final class Environment {
       env.ENV.put(identifiers.get(i), arguments.get(i));
     }
     return env;
+  }
+
+  void set(String id, AstNode value) {
+//    System.out.println(ENV.toString());
+    ENV.put(id, value);
   }
 }
