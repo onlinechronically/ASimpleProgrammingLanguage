@@ -1,19 +1,19 @@
 class DefNode extends AstNode {
+  private String id;
 
   DefNode(String id, AstNode arg) {
-    // TODO.
-    throw new UnsupportedOperationException("not implemented yet");
+    super(arg);
+    this.id = id;
   }
 
   @Override
   AstNode eval(Environment env) {
-    // TODO.
-    throw new UnsupportedOperationException("not implemented yet");
+    env.set(id, getChildren().get(0));
+    return env.lookup(id);
   }
 
   @Override
   public String toString() {
-    // TODO.
-    throw new UnsupportedOperationException("not implemented yet");
+    return String.format("(define %s %s)", this.id, this.getChildren().get(0).toString());
   }
 }
