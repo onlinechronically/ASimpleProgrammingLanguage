@@ -1,5 +1,4 @@
 import java.util.List;
-import java.util.stream.Collectors;
 
 final class FuncNode extends AstNode {
   public List<String> getIdentifiers() {
@@ -15,7 +14,7 @@ final class FuncNode extends AstNode {
 
   @Override
   AstNode eval(Environment env) {
-    return this.getChildren().get(0).eval(env);
+    return this;
   }
 
   @Override

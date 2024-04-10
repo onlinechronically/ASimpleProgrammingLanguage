@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.List;
 
 abstract class AstNode {
@@ -5,7 +6,7 @@ abstract class AstNode {
   private final List<AstNode> CHILDREN;
 
   AstNode(List<AstNode> children) {
-    this.CHILDREN = children;
+    this.CHILDREN = new LinkedList<>(children);
   }
 
   AstNode(AstNode... children) {
