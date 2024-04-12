@@ -14,7 +14,7 @@ final class FuncNode extends AstNode {
 
   @Override
   AstNode eval(Environment env) {
-    return this;
+    return new ClosureNode(this, env);
   }
 
   @Override

@@ -56,4 +56,9 @@ final class Environment {
   void set(String id, AstNode value) {
     ENV.put(id, value);
   }
+
+  @Override
+  public String toString() {
+    return "Environment" + ENV;
+  }
 }
